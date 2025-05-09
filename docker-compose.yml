@@ -4,12 +4,12 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: dockerfile
     ports:
-      - "8899:5000"  # maps host:container
+      - "8899:5000"  # expose container's port 5000 as 8899 on host
     environment:
       - VAR1=10
     volumes:
-      - ./app:/app
-      - ./run.py:/app/run.py
-    command: gunicorn --bind 0.0.0.0:5000 run:app
+      - ./app:/code/app
+      - ./run.py:/code/run.py
+    command: gunicorn --chdir /code --bind 0.0.0.0:5000 run:app
