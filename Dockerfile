@@ -8,7 +8,10 @@ COPY Pipfile Pipfile.lock ./
 RUN python -m pip install --upgrade pip
 RUN pip install pipenv && pipenv install --dev --system --deploy
 
-WORKDIR ./
+# Copy all project files
+COPY . /code
+
+WORKDIR /code
 
 EXPOSE 5000
 
