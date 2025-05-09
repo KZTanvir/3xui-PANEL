@@ -21,14 +21,9 @@ def index():
 def interface_list():
     auth = get_auth()
     interfaces = auth.get_inbounds_all()
+    for interface in interfaces:
+        if isinstance(interface.get('settings'), str):
+            interface['settings'] = None
+
     return jsonify(interfaces), 200
     #return jsonify(interfaces), 200
-
-@main.route('/create_client', methods=['POST'])
-def create_client():
-    auth = get_auth()
-    data = request.get_json()
-    inbound_id = data.get('inbound_id')
-    client_name = data.get('client_name')
-    response = auth.add_client(inbound_id=int(inbound_id), username=client_name)
-    return jsonify(response), 200

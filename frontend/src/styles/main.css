@@ -164,8 +164,7 @@ button:hover {
     /*background-color: var(--blue-500); */
     margin: 6px;
     border-radius: 6px;
-    width: calc(100% - 270px);
-    margin-left: 270px;
+    width: 100%;
     padding: 1em;
 }
 
@@ -282,6 +281,19 @@ button:hover {
 .content .card .table-content .table {
     font-weight: 200;
     font-size: 10px;
+    align-items: center;
+}
+
+.table thead {
+    background-color: var(--black-1k);
+}
+
+.table thead tr th {
+    padding: 0.4em;
+}
+
+.table tbody tr td {
+    text-align: center;
 }
 
 .content .card .form-content {
@@ -306,3 +318,4 @@ button:hover {
     color: var(--aqua-100);
     padding: 0.5em;
 }
+

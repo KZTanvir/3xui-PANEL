@@ -125,7 +125,7 @@ class Authentication:
     def get_online_clients():
         pass
 if __name__ == '__main__':
-    auth = Authentication(username='bdcloud', password='bdcloud')
+    auth = Authentication(username='', password='')
     auth.load_cookies()
     #auth.login()
     #auth.save_cookies()

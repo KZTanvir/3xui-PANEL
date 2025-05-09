@@ -26,21 +26,16 @@ const Interfaces = () => {
             return { ...prev, [id]: !prev[id] }
         })
     }
-    function clientSettings(settings, client_name) {
-        settings = to_json(settings)
-        console.log(settings.clients)
-        return settings.clients.find(client => client.email === client_name)
-    }
 
     return <section>
-        <div className='card'>
-            <h2 className='title'>All Interfaces</h2>
-            <hr />
+        <div className='card logo'>
+            <p>Interface <strong>Design</strong></p>
         </div>
         {loading ? <p>loading</p> : interfaces.map((value, index) => {
             return <div key={index} className='card'>
                 <div className='table-content'>
                     <p className='title'>{value.remark}</p>
+                    <hr /><br />
                     <table className='table'>
                         <tbody>
                             <tr>
@@ -70,35 +65,21 @@ const Interfaces = () => {
                         <thead>
                             <tr>
                                 <th>Client</th>
-                                <th>active</th>
                                 <th>expiry</th>
                                 <th>download </th>
                                 <th>upload </th>
                                 <th>limit</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {value.clientStats.map((client, index) => {
-                                const client_settings = clientSettings(value.settings, client.email)
-
                                 return <>
                                 <tr>
                                     <td>{client.email}</td>
-                                    <td>{client_settings.enable == 1 ? 'Active' : 'Disabled'}</td>
                                     <td>{to_date(client.expiryTime)}</td>
                                     <td>{to_speed(client.down)} GB</td>
                                     <td>{to_speed(client.up)} GB</td>
                                     <td>{to_speed(client.total)} GB</td>
-                                    <td>
-                                        <a href={"https://www.google.com/" + client.id}>
-                                            <button>COPY</button>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>{client.email} (id)</td>
-                                    <td colSpan={5}>{client_settings.id}</td>
                                 </tr>
                                 </>
                             })}
