@@ -1,7 +1,7 @@
 from flask import current_app, render_template, flash, Blueprint, jsonify, request
 from app.x_ui_fetch import Authentication
 import json
-main = Blueprint('/', __name__, template_folder='../frontend/dist', static_folder='../frontend/dist/assets')
+main = Blueprint('/', __name__, template_folder='../frontend/main', static_folder='../frontend/main/assets')
 
 def get_auth(): #without app context
     auth = Authentication(
