@@ -9,9 +9,9 @@ RUN python -m pip install --upgrade pip
 RUN pip install pipenv && pipenv install --dev --system --deploy
 
 # Copy all project files
-COPY . /code
+COPY . /
 
-WORKDIR /code
+WORKDIR /
 
 EXPOSE 5000
 
