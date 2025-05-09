@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "8899:5000"  # maps host:container
+    environment:
+      - VAR1=10
+    volumes:
+      - ./app:/app
+      - ./run.py:/app/run.py
+    command: gunicorn --bind 0.0.0.0:5000 run:app
